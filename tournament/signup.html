@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameX - Create Account</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#090d22,#131b46,#050816);
+overflow:hidden;
+}
+
+body::before{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background:
+radial-gradient(circle,#00e5ff22 2px,transparent 3px);
+background-size:60px 60px;
+animation:move 25s linear infinite;
+}
+
+@keyframes move{
+0%{transform:translate(0,0);}
+100%{transform:translate(-60px,-60px);}
+}
+
+.container{
+position:relative;
+z-index:2;
+width:420px;
+background:rgba(18,18,35,.92);
+padding:35px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+box-shadow:0 0 30px rgba(0,255,255,.25);
+}
+
+.logo{
+font-family:'Orbitron';
+font-size:36px;
+font-weight:700;
+color:#00e5ff;
+text-align:center;
+margin-bottom:8px;
+}
+
+.subtitle{
+text-align:center;
+color:#ccc;
+margin-bottom:30px;
+}
+
+.input-group{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+color:white;
+margin-bottom:8px;
+font-size:14px;
+}
+
+input{
+width:100%;
+padding:14px;
+border:none;
+outline:none;
+background:#222843;
+color:white;
+border-radius:10px;
+font-size:15px;
+transition:.3s;
+}
+
+input:focus{
+box-shadow:0 0 10px #00e5ff;
+}
+
+.password-box{
+position:relative;
+}
+
+.password-box span{
+position:absolute;
+right:15px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+color:#aaa;
+}
+
+.terms{
+display:flex;
+align-items:center;
+gap:8px;
+margin:15px 0;
+font-size:13px;
+color:#ddd;
+}
+
+.terms input{
+width:auto;
+}
+
+.signup-btn{
+width:100%;
+padding:14px;
+border:none;
+background:#00e5ff;
+color:black;
+font-size:17px;
+font-weight:bold;
+border-radius:10px;
+cursor:pointer;
+transition:.3s;
+}
+
+.signup-btn:hover{
+background:#00c7dd;
+transform:scale(1.02);
+}
+
+.or{
+text-align:center;
+margin:18px 0;
+color:#999;
+}
+
+.google-btn{
+width:100%;
+padding:13px;
+border:none;
+background:white;
+border-radius:10px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+cursor:pointer;
+font-size:15px;
+font-weight:500;
+}
+
+.google-btn img{
+width:22px;
+}
+
+.google-btn:hover{
+background:#f2f2f2;
+}
+
+.login{
+margin-top:22px;
+text-align:center;
+color:#ccc;
+}
+
+.login a{
+color:#00e5ff;
+text-decoration:none;
+font-weight:600;
+}
+
+@media(max-width:450px){
+
+.container{
+width:92%;
+padding:25px;
+}
+
+.logo{
+font-size:30px;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="logo">GameX</div>
+
+<p class="subtitle">Create Your Gaming Account</p>
+
+<form>
+
+<div class="input-group">
+<label>Full Name</label>
+<input
+type="text"
+id="name"
+placeholder="Enter your Full Name"
+required>
+</div>
+
+<div class="input-group">
+<label>Email Address</label>
+<input
+type="email"
+id="email"
+placeholder="Enter your Gmail"
+required>
+</div>
+
+<div class="input-group">
+
+<label>Password</label>
+
+<div class="password-box">
+
+<input
+type="password"
+id="password"
+placeholder="Create Password"
+required>
+
+<span onclick="togglePassword('password')">👁</span>
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>Confirm Password</label>
+
+<div class="password-box">
+
+<input
+type="password"
+id="confirmPassword"
+placeholder="Confirm Password"
+required>
+
+<span onclick="togglePassword('confirmPassword')">👁</span>
+
+</div>
+
+</div>
+
+<label class="terms">
+<input type="checkbox" required>
+I agree to the Terms & Conditions
+</label>
+
+<button type="button" class="signup-btn" onclick="createAccount()">
+CREATE ACCOUNT
+</button>
+
+</form>
+
+<div class="or">
+──────── OR ────────
+</div>
+
+<button type="button" class="google-btn" onclick="googleSignup()">
+
+<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+
+Continue with Google
+
+</button>
+
+<div class="login">
+
+Already have an account?
+
+<a href="login.google.html">Login</a>
+
+</div>
+
+</div>
+
+<script>
+function togglePassword(id){
+
+const input=document.getElementById(id);
+
+input.type=input.type==="password"?"text":"password";
+
+}
+
+function createAccount(){
+
+const password=document.getElementById("password").value;
+const confirm=document.getElementById("confirmPassword").value;
+
+if(password!==confirm){
+
+alert("Passwords do not match!");
+
+return;
+
+}
+
+alert("Firebase Signup Code Goes Here");
+
+}
+
+function googleSignup(){
+
+alert("Google Signup with Firebase");
+
+}
+</script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } 
+  from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import { getFirestore, doc, setDoc } 
+  from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAnKymEsQ_rm-DdzmF_IZfeYgMlHxvPVW8",
+  authDomain: "gamex-8a6c8.firebaseapp.com",
+  projectId: "gamex-8a6c8",
+  storageBucket: "gamex-8a6c8.firebasestorage.app",
+  messagingSenderId: "779198723458",
+  appId: "1:779198723458:web:fddda7db06a7dd97510b9b",
+  measurementId: "G-PFLVKGJBS9"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const provider = new GoogleAuthProvider();
+
+// =====================
+// Email Signup
+// =====================
+window.createAccount = async function() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const confirm = document.getElementById("confirmPassword").value;
+
+  if (password !== confirm) {
+    alert("Passwords do not match!");
+    return;
+  }
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    // Save user info in Firestore
+    await setDoc(doc(db, "players", user.uid), {
+      name: name,
+      email: email
+    });
+
+    alert("Account created successfully!");
+    window.location.href = "afterlogin.html"; // redirect to dashboard
+  } catch (error) {
+    alert(error.message);
+  }
+};
+
+// =====================
+// Google Signup
+// =====================
+window.googleSignup = async function() {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    // Save user info in Firestore
+    await setDoc(doc(db, "players", user.uid), {
+      name: user.displayName,
+      email: user.email,
+      photo: user.photoURL
+    });
+
+    alert("Welcome " + user.displayName);
+    window.location.href = "afterlogin.html"; // redirect to dashboard
+  } catch (error) {
+    alert(error.message);
+  }
+};
+</script>
+
+
+</body>
+</html>

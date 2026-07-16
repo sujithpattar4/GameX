@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GameX Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(rgba(5,8,20,.85),rgba(5,8,20,.92)),
+url("https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=80");
+
+background-size:cover;
+background-position:center;
+color:white;
+min-height:100vh;
+
+}
+
+/* Sidebar */
+
+.sidebar{
+
+position:fixed;
+left:0;
+top:0;
+width:250px;
+height:100%;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+padding:30px;
+
+border-right:1px solid rgba(255,255,255,.1);
+
+}
+
+.logo{
+
+font-size:32px;
+font-weight:800;
+color:#00ffff;
+margin-bottom:40px;
+
+}
+
+.sidebar ul{
+
+list-style:none;
+
+}
+
+.sidebar li{
+
+padding:18px;
+margin-bottom:12px;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.sidebar li:hover{
+
+background:#00ffff;
+color:black;
+
+}
+
+/* Main */
+
+.main{
+
+margin-left:260px;
+padding:40px;
+
+}
+
+/* Top */
+
+.top{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:40px;
+
+}
+
+.profile{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+}
+
+.avatar{
+
+width:55px;
+height:55px;
+border-radius:50%;
+background:#00ffff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+color:black;
+font-weight:bold;
+
+}
+
+/* Welcome */
+
+.welcome{
+
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+
+padding:30px;
+border-radius:20px;
+
+border:1px solid rgba(255,255,255,.1);
+
+margin-bottom:35px;
+
+}
+
+.welcome h1{
+
+font-size:40px;
+color:#00ffff;
+
+}
+
+.welcome p{
+
+margin-top:15px;
+color:#ddd;
+
+}
+
+/* Stats */
+
+.stats{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:40px;
+
+}
+
+.stat{
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+padding:25px;
+border-radius:20px;
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+.stat:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 0 25px cyan;
+
+}
+
+.stat h2{
+
+font-size:36px;
+margin-bottom:10px;
+color:#00ffff;
+
+}
+
+/* Tournament Cards */
+
+.title{
+
+font-size:32px;
+margin-bottom:25px;
+
+}
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:30px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+border-radius:20px;
+
+overflow:hidden;
+
+transition:.4s;
+
+border:1px solid rgba(255,255,255,.1);
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 0 35px #00ffff;
+
+}
+
+.card img{
+
+width:100%;
+height:220px;
+object-fit:cover;
+
+}
+
+.content{
+
+padding:25px;
+
+}
+
+.content h2{
+
+margin-bottom:15px;
+color:#00ffff;
+
+}
+
+.content p{
+
+line-height:1.8;
+color:#ddd;
+
+}
+
+.info{
+
+margin:20px 0;
+
+}
+
+.info span{
+
+display:block;
+margin:8px 0;
+
+}
+
+button{
+
+width:100%;
+padding:16px;
+
+background:#00ffff;
+
+color:black;
+
+font-weight:bold;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:17px;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#ff00aa;
+color:white;
+
+}
+
+/* Footer */
+
+.footer{
+
+margin-top:50px;
+text-align:center;
+color:#aaa;
+
+}
+
+@media(max-width:900px){
+
+.sidebar{
+
+display:none;
+
+}
+
+.main{
+
+margin-left:0;
+
+padding:20px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<div class="logo">GameX eSoprts</div>
+
+<ul>
+
+<li>🏠 Dashboard</li>
+
+<li>🏆 Leaderboard</li>
+
+<li>👥 Teams</li>
+
+<button onclick="window.location.href='payment.html'">💳 Payments</button>
+
+<li id="logoutBtn">🚪 Logout</li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
+<div class="top">
+
+<div>
+
+<h2>Gaming Dashboard</h2>
+
+</div>
+
+<div class="profile">
+
+<div class="avatar"></div>
+<div>
+  <b></b>
+  <p></p>
+</div>
+
+</div>
+
+</div>
+
+<div class="welcome">
+
+<h1>Welcome to GameX</h1>
+
+<p>
+Compete in India's biggest esports tournaments.
+Register your squad, win cash prizes and climb the leaderboard.
+</p>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+
+<h2>2,000</h2>
+
+<p>Total Prize Pool</p>
+
+</div>
+
+<div class="stat">
+
+<h2>10</h2>
+
+<p>Total Teams</p>
+
+</div>
+
+
+<button onclick="window.location.href='https://www.instagram.com/gamex_e_sports/'">Follow Us</button>
+<button onclick="window.location.href='https://t.me/gamex_e_sports'">Join Our Telegram</button>
+<div class="stat">
+
+<h2>LIVE</h2>
+
+<p>Tournament Status</p>
+
+</div>
+
+</div>
+
+<h1 class="title">Available Tournaments</h1>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="free fire.png">
+
+<div class="content">
+
+<h2>🔥 Free Fire Tournament</h2>
+
+<p>
+
+India Squad Championship
+
+</p>
+
+<div class="info">
+
+<span>📅 Date : 28 July 2026</span>
+
+<span>💰 Prize Pool : ₹50,000</span>
+
+<span>👥 Mode : Squad</span>
+
+<span>🟢 Slots Left : 28</span>
+
+</div>
+
+<button onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSdMnWDS6HqmUJ3o8dCxc0PXWiJHsa7w_kzDKtFuBcTvfTDs-g/viewform?usp=publish-editor'">
+    Register Now
+</button>
+
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="bgmi.fire.png.png">
+
+<div class="content">
+
+<h2>⚡ BGMI Championship</h2>
+
+<p>
+
+Professional Battle Royale Tournament
+
+</p>
+
+<div class="info">
+
+<span>📅 Date : 30 July 2026</span>
+
+<span>💰 Prize Pool : ₹1,00,000</span>
+
+<span>👥 Mode : Squad</span>
+
+<span>🟢 Slots Left : 16</span>
+
+</div>
+
+<button onclick="alert('BGMI Registration Coming Soon!')">
+
+Register Now
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+© 2026 GameX Esports Tournament
+
+</div>
+
+</div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import { signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAnKymEsQ_rm-DdzmF_IZfeYgMlHxvPVW8",
+  authDomain: "gamex-8a6c8.firebaseapp.com",
+  projectId: "gamex-8a6c8",
+  storageBucket: "gamex-8a6c8.firebasestorage.app",
+  messagingSenderId: "779198723458",
+  appId: "1:779198723458:web:fddda7db06a7dd97510b9b",
+  measurementId: "G-PFLVKGJBS9"
+};
+
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// Listen for login state
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // Update profile section dynamically
+    document.querySelector(".avatar").innerHTML = `<img src="${user.photoURL}" style="width:55px;height:55px;border-radius:50%;">`;
+    document.querySelector(".profile b").textContent = user.displayName;
+    document.querySelector(".profile p").textContent = "Email: " + user.email;
+  } else {
+    // If not logged in, redirect back to login page
+    window.location.href = "login.google.html";
+  }
+  // Logout functionality
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  signOut(auth).then(() => {
+    alert("Logged out successfully!");
+    window.location.href = "login.google.html"; // Redirect back to login page
+  }).catch((error) => {
+    console.error(error);
+    alert("Error logging out: " + error.message);
+  });
+});
+
+});
+</script>
+
+
+</body>
+</html>
